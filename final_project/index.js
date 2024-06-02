@@ -12,7 +12,7 @@ app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUni
 
 app.use("/customer/auth/*", function auth(req,res,next){
     if(req.session.authorization) {
-        let tkn = req.session.authorization['accessToken'];
+        let tkn = req.session.authorization['token'];
         jwt.verify(tkn, 'access', (error, user) => {
             if(!error) {
                 req.user = user;
